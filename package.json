@@ -1,11 +1,26 @@
 {
 	"name": "webtest1",
 	"private": true,
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"type": "module",
 	"author": "Viktor Tomkovič",
 	"license": "MIT",
+	"scripts": {
+		"start": "npm run compile && npm run build && npm run serve",
+		"serve": "npx http-server ./dist --port 8080 --proxy \"http://localhost:8080?\"",
+		"build": "webpack --config webpack.config.js",
+		"compile": "npx tsc"
+	},
 	"devDependencies": {
-		"typescript": "^5.6.2"
+		"@babel/preset-react": "^7.25.7",
+		"@types/node": "^22.7.4",
+		"@types/react-dom": "^18.3.0",
+		"typescript": "^5.6.2",
+		"webpack": "^5.95.0",
+		"webpack-cli": "^5.1.4"
+	},
+	"dependencies": {
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
 	}
 }
