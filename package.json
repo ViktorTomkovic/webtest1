@@ -6,20 +6,25 @@
 	"author": "Viktor Tomkovič",
 	"license": "MIT",
 	"scripts": {
-		"start": "npm run compile && npm run build && npm run serve",
+		"start": "npm run copy:windows && npm run compile && npm run build && npm run serve",
+		"wtf": "npm run copy:windows && npm run build && npm run serve",
+		"start:webpack": "webpack serve --progress --color",
+		"copy:linux": "mkdir -p ./dist/ && cp -f ./public/* ./dist/",
+		"copy:windows": "pwsh.exe -File ./copyPublic.ps1",
 		"serve": "npx http-server ./dist --port 8080 --proxy \"http://localhost:8080?\"",
 		"build": "webpack --config webpack.config.js",
-		"compile": "npx tsc"
+		"compile": "npx tsc --project ./tsconfig.json"
 	},
 	"devDependencies": {
-		"@babel/preset-react": "^7.25.7",
 		"@types/node": "^22.7.4",
 		"@types/react-dom": "^18.3.0",
+		"ts-loader": "^9.5.1",
 		"typescript": "^5.6.2",
 		"webpack": "^5.95.0",
 		"webpack-cli": "^5.1.4"
 	},
 	"dependencies": {
+		"@types/react": "^18.3.11",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	}
