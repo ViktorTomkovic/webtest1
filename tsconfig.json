@@ -1,14 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
+		"target": "es6",
 		"esModuleInterop": true,
 		"jsx": "react",
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
+		"module": "es6",
+		"moduleResolution": "node",
 		"outDir": "./dist/",
 		"allowJs": true,
 		"noImplicitAny": true,
-		"sourceMap": true
+		"sourceMap": true,
+		"isolatedModules": true
 	}
 }
-

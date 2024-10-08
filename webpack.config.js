@@ -19,6 +19,10 @@ const options = {
 				loader: 'ts-loader',
 				exclude: /node_modules/
 			},
+			{
+				test: /\.css$/i,
+				use: ["css-loader"],
+			},
 		],
 	},
 	resolve: {
@@ -28,6 +32,9 @@ const options = {
 			'.cts': ['.cjs', '.cts'],
 			'.mts': ['.mjs', '.mts']
 		}
+	},
+	devServer: {
+		port: 9090,
 	}
 };
 export default options;

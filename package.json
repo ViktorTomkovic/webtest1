@@ -6,26 +6,30 @@
 	"author": "Viktor Tomkovič",
 	"license": "MIT",
 	"scripts": {
-		"start": "npm run copy:windows && npm run compile && npm run build && npm run serve",
-		"wtf": "npm run copy:windows && npm run build && npm run serve",
-		"start:webpack": "webpack serve --progress --color",
+		"start": "npm run webpack:serve",
+		"start2": "npm run copy:windows && npm run compile && npm run webpack:build && npm run serve",
 		"copy:linux": "mkdir -p ./dist/ && cp -f ./public/* ./dist/",
 		"copy:windows": "pwsh.exe -File ./copyPublic.ps1",
-		"serve": "npx http-server ./dist --port 8080 --proxy \"http://localhost:8080?\"",
-		"build": "webpack --config webpack.config.js",
-		"compile": "npx tsc --project ./tsconfig.json"
+		"http-server:serve": "npx http-server ./dist --port 8080 --proxy \"http://localhost:8080?\"",
+		"compile": "npx tsc --project ./tsconfig.json",
+		"webpack:build": "webpack --config webpack.config.js",
+		"webpack:serve": "webpack-dev-server --progress --color"
 	},
 	"devDependencies": {
 		"@types/node": "^22.7.4",
 		"@types/react-dom": "^18.3.0",
+		"css-loader": "^7.1.2",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.6.2",
 		"webpack": "^5.95.0",
-		"webpack-cli": "^5.1.4"
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^5.1.0"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.2.8",
 		"@types/react": "^18.3.11",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"react-redux": "^9.1.2"
 	}
 }
